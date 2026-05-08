@@ -32,3 +32,15 @@ add_filter("xmlrpc_enabled", "__return_false");
 if (!defined("DISALLOW_FILE_EDIT")) {
     define("DISALLOW_FILE_EDIT", true);
 }
+
+// Wyłącz zbędne rzeczy w panelu które spowalniają
+add_action("admin_init", function () {
+    remove_action("welcome_panel", "wp_welcome_panel");
+    remove_menu_page("site-health.php");
+});
+
+add_action("init", function () {
+    if (is_admin()) {
+        wp_deregister_script("heartbeat");
+    }
+});

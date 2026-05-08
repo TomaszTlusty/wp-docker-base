@@ -27,9 +27,8 @@ services:
       WORDPRESS_DEBUG: 0
       PHP_INI_SCAN_DIR: /usr/local/etc/php/conf.d
     volumes:
-      - ./wordpress:/var/www/html
-      - ./php/security.ini:/usr/local/etc/php/conf.d/security.ini
       - ./wp-content:/var/www/html/wp-content
+      - ./php/security.ini:/usr/local/etc/php/conf.d/security.ini
     networks:
       - wp-network
   nginx:

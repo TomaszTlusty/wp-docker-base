@@ -29,7 +29,6 @@ services:
       PHP_INI_SCAN_DIR: /usr/local/etc/php/conf.d
     volumes:
       - ./wordpress:/var/www/html
-      - ./wordpress/wp-content:/var/www/html/wp-content
       - ./php/security.ini:/usr/local/etc/php/conf.d/security.ini
     networks:
       - wp-network

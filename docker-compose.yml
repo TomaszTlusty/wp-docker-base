@@ -29,8 +29,7 @@ services:
     volumes:
       - ./wordpress:/var/www/html
       - ./php/security.ini:/usr/local/etc/php/conf.d/security.ini
-      - ./config/wp-config.php:/var/www/html/wp-config.php
-      - ./config/functions.php:/var/www/html/wp-content/themes/twentytwentyfive/functions.php
+      - ./wp-content:/var/www/html/wp-content
     networks:
       - wp-network
   nginx:

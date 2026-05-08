@@ -1,3 +1,8 @@
 .env
-wordpress/
 db_data/
+wordpress/*
+!wordpress/wp-content/
+wordpress/wp-content/*
+!wordpress/wp-content/mu-plugins/
+!wordpress/wp-content/themes/
+!wordpress/wp-content/plugins/

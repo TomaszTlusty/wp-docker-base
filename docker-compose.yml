@@ -1,6 +1,11 @@
 services:
   db:
     image: mysql:8.4
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     container_name: wp_db
     restart: unless-stopped
     environment:
@@ -18,7 +23,8 @@ services:
     container_name: wp_app
     restart: unless-stopped
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
@@ -50,3 +56,6 @@ services:
 networks:
   wp-network:
     driver: bridge
+
+volumes:
+  db_data:
